@@ -184,7 +184,7 @@ function spinReels() {
 }
 
 function generateRandomSpin() {
-    return [0, 0, 0].map(() => symbols[Math.floor(Math.random() * symbols.length)]);
+    return symbols.map(() => symbols[Math.floor(Math.random() * symbols.length)]);
 }
 
 function generateForcedWin() {
