@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="admin-section" class="active">
+        <h2>Admin Panel</h2>
+        <form id="admin-override-form" autocomplete="off">
+            <label for="override-username">Target Player Username:</label>
+            <input type="text" id="override-username">
+            <label>Force Result:</label>
+            <select id="force-result">
+                <option value="random">Random (Default)</option>
+                <option value="win">Force Win</option>
+                <option value="lose">Force Lose</option>
+                <option value="jackpot">Force Jackpot</option>
+            </select>
+            <button type="button" id="set-override-btn">Set Override</button>
+            <button type="button" id="clear-override-btn">Clear Override</button>
+        </form>
+        <div id="override-status"></div>
+        <button id="admin-logout-btn" class="logout-btn">Logout</button>
+    </section>
+    <script src="admin.js"></script>
+</body>
+</html> 
