@@ -1,7 +1,8 @@
 // Hardcoded users
 const users = {
-    "player1": { password: "123", balance: 1000, isAdmin: false },
-    "admin01": { password: "admin", isAdmin: true }
+    "player": { password: "123", balance: 100000, isAdmin: false },
+    "player2": { password: "123", balance: 100000, isAdmin: false },
+    "admin": { password: "admin", isAdmin: true }
 };
 
 const loginForm = document.getElementById('login-form');

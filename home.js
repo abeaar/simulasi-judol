@@ -8,12 +8,12 @@ if (!username || isAdmin) {
 // --- Data ---
 const symbols = ["🍒", "🍋", "🍊", "🔔", "⭐", "💎"];
 const paytable = {
-    "💎💎💎": 500,
-    "⭐⭐⭐": 200,
-    "🔔🔔🔔": 100,
-    "🍊🍊🍊": 50,
-    "🍋🍋🍋": 25,
-    "🍒🍒🍒": 10
+    "💎💎💎💎💎💎": 500,
+    "⭐⭐⭐⭐⭐⭐": 200,
+    "🔔🔔🔔🔔🔔🔔": 100,
+    "🍊🍊🍊🍊🍊🍊": 50,
+    "🍋🍋🍋🍋🍋🍋": 25,
+    "🍒🍒🍒🍒🍒🍒": 10
 };
 
 // --- DOM ---
@@ -23,7 +23,10 @@ const spinBtn = document.getElementById('spin-btn');
 const slotReels = [
     document.getElementById('reel-1'),
     document.getElementById('reel-2'),
-    document.getElementById('reel-3')
+    document.getElementById('reel-3'),
+    document.getElementById('reel-4'),
+    document.getElementById('reel-5'),
+    document.getElementById('reel-6'),
 ];
 const gameMessage = document.getElementById('game-message');
 const logoutBtn = document.getElementById('logout-btn');
@@ -35,12 +38,13 @@ function setBalance(val) {
     localStorage.setItem('slot_balance_' + username, val);
 }
 function updateBalanceDisplay() {
-    userBalance.textContent = `Balance: $${getBalance()}`;
+    userBalance.textContent = `SIsah uang Rp. ${getBalance()}`;
 }
 function resetGameUI() {
     slotReels.forEach(reel => reel.innerHTML = '<span>?</span>');
+
     gameMessage.textContent = '';
-    betAmountInput.value = 10;
+    betAmountInput.value = 1000;
 }
 
 logoutBtn.addEventListener('click', function() {
@@ -89,7 +93,7 @@ function spinReels() {
     }
 
     // Display reels
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 6; i++) {
         slotReels[i].innerHTML = `<span>${resultSymbols[i]}</span>`;
     }
 
@@ -99,7 +103,7 @@ function spinReels() {
         let winAmount = paytable[resultKey] * bet;
         setBalance(getBalance() + winAmount);
         updateBalanceDisplay();
-        if (resultKey === '💎💎💎') {
+        if (resultKey === '💎💎💎💎💎💎') {
             gameMessage.textContent = `Jackpot! You won $${winAmount}!`;
         } else {
             gameMessage.textContent = `You Won $${winAmount}!`;
@@ -110,10 +114,10 @@ function spinReels() {
 }
 
 function generateRandomSpin() {
-    return [0, 0, 0].map(() => symbols[Math.floor(Math.random() * symbols.length)]);
+    return [0, 0, 0, 0, 0, 0].map(() => symbols[Math.floor(Math.random() * symbols.length)]);
 }
 function generateForcedWin() {
-    const nonJackpotWins = Object.keys(paytable).filter(k => k !== '💎💎💎');
+    const nonJackpotWins = Object.keys(paytable).filter(k => k !== '💎💎💎💎💎💎');
     const winKey = nonJackpotWins[Math.floor(Math.random() * nonJackpotWins.length)];
     return winKey.split('');
 }
@@ -125,7 +129,7 @@ function generateForcedLoss() {
     return result;
 }
 function generateForcedJackpot() {
-    return ['💎', '💎', '💎'];
+    return ['💎', '💎', '💎','💎','💎','💎'];
 }
 
 // --- Init ---
